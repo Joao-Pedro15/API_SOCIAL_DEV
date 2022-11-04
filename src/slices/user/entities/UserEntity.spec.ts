@@ -1,4 +1,4 @@
-import { User, UserData } from '@/slices/user/entities/UserEntity'
+import { UserEntity, UserData } from '@/slices/user/entities/UserEntity'
 import exp from 'constants'
 
 const UserEntityFake : UserData = {
@@ -13,13 +13,13 @@ const UserEntityFake : UserData = {
 
 describe('user', () => {
     it('create user successfully!', () => {
-        const user = User.create(UserEntityFake)
+        const user = UserEntity.create(UserEntityFake)
         expect(user).toBeTruthy()
         expect(user).toEqual(UserEntityFake)
     })    
 
     it('create user error', () => {
         const user = {...UserEntityFake, confirmPassword: 'mon'}
-        expect(() => User.create(user)).toThrow()
+        expect(() => UserEntity.create(user)).toThrow()
     })
 })

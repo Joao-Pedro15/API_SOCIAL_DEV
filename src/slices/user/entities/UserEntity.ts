@@ -8,7 +8,7 @@ export type UserData = {
     confirmPassword: string
 }
 
-export class User {
+export class UserEntity {
     public name: string
     public email: string
     public status: string
@@ -22,7 +22,7 @@ export class User {
 
     static create (data: UserData) {
         if(data.password !== data.confirmPassword) throw new Error("Password and ConfirmPassord not equals")
-        const user = new User(data)
+        const user = new UserEntity(data)
         return user
     }
 }
