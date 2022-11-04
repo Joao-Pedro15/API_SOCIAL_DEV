@@ -2,8 +2,9 @@
   "name": "api_social_dev",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "index.ts",
   "scripts": {
+    "dev": "ts-node-dev --exit-child --transpile-only --ignore-watch node_modules --respawn src/server/index.ts",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -14,7 +15,6 @@
   "author": "",
   "license": "ISC",
   "bugs": {
-    "dev": "ts-node-dev --exit-child --transpile-only --ignore-watch node_modules --respawn src/server/index.ts",
     "url": "https://github.com/Joao-Pedro15/API_SOCIAL_DEV/issues"
   },
   "homepage": "https://github.com/Joao-Pedro15/API_SOCIAL_DEV#readme",

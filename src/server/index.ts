@@ -1,4 +1,5 @@
-import server from '@/app'
-const PORT = 3344 || process.env.PORT
+import app from '../app'
+const PORT = 3334
 
-server.listen(PORT, `Server runnning on port ${PORT}`)
+app.listen(PORT, () => console.log(`Server running on port ${PORT}`)
+)
