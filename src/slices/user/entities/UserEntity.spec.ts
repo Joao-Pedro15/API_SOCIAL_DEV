@@ -1,7 +1,7 @@
 import { UserEntity, UserData } from '@/slices/user/entities/UserEntity'
 import exp from 'constants'
 
-const UserEntityFake : UserData = {
+export const UserEntityFake : UserData = {
     name: 'fakeUsername',
     email: 'joaoa@GMAIL.COM',
     admin: false,
