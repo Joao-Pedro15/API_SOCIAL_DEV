@@ -13,7 +13,7 @@
     "paths": {
     "@/*": ["*"]
     },
-    "strict": true,
+    "strict": false,
     "noImplicitOverride": true,
     "removeComments": true,
     "emitDecoratorMetadata": true,
