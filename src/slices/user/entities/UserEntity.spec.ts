@@ -6,9 +6,9 @@ export const UserEntityFake : UserData = {
     email: 'joaoa@GMAIL.COM',
     admin: false,
     status: 'ativo',
-    photo: 'fefe',
-    password: 'monoemo',
-    confirmPassword: 'monoemo'
+    photo: 'https://link-da-foto',
+    password: 'senha123',
+    confirmPassword: 'senha123'
 }
 
 describe('user', () => {
