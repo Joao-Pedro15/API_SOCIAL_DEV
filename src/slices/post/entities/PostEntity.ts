@@ -18,14 +18,14 @@ export class PostEntity {
     data.status = true
   }
 
-  public create(data:PostData) : PostEntity | Error {
-    if(!this.validate(data)) throw new Error('Error in create post')
+  static create(data:PostData) : PostEntity | Error {
+    if(!PostEntity.validate(data)) throw new Error('Error in create post')
     const post = new PostEntity(data)
     return post
   }
 
-  private validate(data:PostData) : boolean {
-    if(data.content.trim.length <= 0) return false
+  static validate(data:PostData) : boolean {
+    if(data.content.trim().length <= 0) return false
     return true
   }
 
