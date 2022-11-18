@@ -16,6 +16,7 @@ export class ReactionEntity {
   
   static create(data: ReactionData) {
     if(!this.validate(data)) throw new Error('Invalid data object')
+    return new ReactionEntity(data)
   }
 
   static validate(data: ReactionData) : boolean {
