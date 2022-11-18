@@ -1,7 +1,7 @@
 import { MockProxy, mock } from 'jest-mock-extended'
 import { UserEntityFake } from '../../entities/UserEntity.spec'
 import { AddUserRepository, GetUserRepository } from '../../repositories'
-import { AddUserUseCase } from './AddUser'
+import { AddUserUseCase } from './AddUserUseCase'
 
 describe('addUser', () => {
     let addUserRepository : MockProxy<AddUserRepository>
