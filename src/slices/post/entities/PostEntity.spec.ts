@@ -1,5 +1,4 @@
 import { PostData, PostEntity } from '@/slices/post/entities/PostEntity'
-import exp from 'constants'
 
 export const PostEntityFake : PostData = {
   userId: 1,
