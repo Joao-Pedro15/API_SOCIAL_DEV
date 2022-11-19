@@ -12,4 +12,9 @@ describe('create entity Reaction', () => {
     const reaction = ReactionEntity.create(fakeReaction)
     expect(reaction).toEqual(fakeReaction)
   })
+
+  it('try create entity and return error', () => {
+    const reaction = {...fakeReaction, commentId: null}
+    expect(() =>       ReactionEntity.create(reaction)).toThrow('Invalid data object')
+  })
 })
