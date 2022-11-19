@@ -1,6 +1,6 @@
 import { ReactionEntity, ReactionData } from './ReactionEntity'
 
-let fakeReaction = {
+export let fakeReaction = {
   reactionType: 'love',
   userId: 2,
   commentId: 3,
