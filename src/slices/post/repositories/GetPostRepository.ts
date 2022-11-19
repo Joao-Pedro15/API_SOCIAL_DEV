@@ -4,4 +4,5 @@ export interface GetPostRepository {
   getAllPosts(query: string) : Promise<PostData[] | null>
   getPostsByFollowers(userId: number) : Promise<PostData[] | null>
   getPostsByUser(userId: number) : Promise<PostData[] | null>
+  getPostById(id: number) : Promise<PostData | null>
 }
