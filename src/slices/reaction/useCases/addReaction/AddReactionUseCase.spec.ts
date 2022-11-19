@@ -2,15 +2,20 @@ import { AddReactionRepository } from '@/slices/reaction/repository/AddReactionR
 import { fakeReaction } from '@/slices/reaction/entities/ReactionEntity.spec'
 import { mock, MockProxy } from 'jest-mock-extended'
 import { AddReactionUseCase } from './AddReactionUseCase'
+import { GetPostRepository } from '@/slices/post/repositories/GetPostRepository'
+import { PostEntityFake } from '@/slices/post/entities/PostEntity.spec'
 
 describe('test add reaction useCase', () => {
   let addReactionRepository: MockProxy<AddReactionRepository>
+  let getPostRepository: MockProxy<GetPostRepository>
   beforeAll(async() => {
     addReactionRepository = mock()
+    getPostRepository = mock()
     addReactionRepository.addReaction.mockResolvedValue(undefined)
+    getPostRepository.getPostById.mockResolvedValue(PostEntityFake)
   })
   it('successfully add Reaction', async() => {
-    const reaction = await new AddReactionUseCase(addReactionRepository).execute(fakeReaction)
+    const reaction = await new AddReactionUseCase(addReactionRepository, getPostRepository).execute(fakeReaction)
     expect(reaction).toBe(undefined)
   })
 })
