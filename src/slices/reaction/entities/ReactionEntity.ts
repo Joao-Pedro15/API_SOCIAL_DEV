@@ -1,4 +1,4 @@
-interface ReactionData {
+export interface ReactionData {
   userId: number
   postId?: number | null
   commentId?: number | null 
