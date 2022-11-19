@@ -9,10 +9,10 @@ export class AddReactionUseCase {
     private getPostRepository: GetPostRepository
   ){}
   async execute(data: ReactionData) {
-    const post = await this.getPostRepository.getPostById(data.postId)
-    if(!post) throw new Error('cannot find post or comment')
-
+    
     try {
+      const post = await this.getPostRepository.getPostById(data.postId)
+      if(!post) throw new Error('cannot find post or comment')
       const reactionEntity = ReactionEntity.create(data)
       const reaction = await this.addRepository.addReaction(reactionEntity)
       return reaction
