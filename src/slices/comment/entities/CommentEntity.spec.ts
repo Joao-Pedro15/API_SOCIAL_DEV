@@ -8,8 +8,15 @@ let fakeComment: CommentData = {
 }
 
 describe('create a entity comment', () => {
+  
   it('successfully create a entity comment', () => {
     const comment = CommentEntity.create(fakeComment)
     expect(comment).toEqual(fakeComment)
   })
+
+  it('try create a entity comment and return error', () => {
+    const comment = {...fakeComment, content: ' '}
+    expect(() => CommentEntity.create(comment)).toThrow('content not empty')
+  })
+
 })
