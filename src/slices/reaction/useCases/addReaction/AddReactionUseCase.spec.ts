@@ -18,4 +18,10 @@ describe('test add reaction useCase', () => {
     const reaction = await new AddReactionUseCase(addReactionRepository, getPostRepository).execute(fakeReaction)
     expect(reaction).toBe(undefined)
   })
+
+  it('error in add reaction not found post by postId', async() => {
+    getPostRepository.getPostById.mockResolvedValue(null)
+    const addReactionError = await new AddReactionUseCase(addReactionRepository, getPostRepository).execute(fakeReaction) as Error
+    expect(addReactionError).toEqual('cannot find post or comment')
+  })
 })
