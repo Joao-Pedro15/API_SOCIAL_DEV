@@ -1,5 +1,5 @@
-import { AddCommentRepository } from '../repositories/AddCommentRepository'
-import { CommentData, CommentEntity } from '../entities/CommentEntity'
+import { AddCommentRepository } from '../../repositories/AddCommentRepository'
+import { CommentData, CommentEntity } from '../../entities/CommentEntity'
 
 export class AddCommentUseCase {
   constructor(
