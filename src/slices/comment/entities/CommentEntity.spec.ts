@@ -1,6 +1,6 @@
 import { CommentData, CommentEntity } from './CommentEntity'
 
-let fakeComment: CommentData = {
+export let fakeComment: CommentData = {
   content: 'opa',
   postId: 2,
   userId: 3,
