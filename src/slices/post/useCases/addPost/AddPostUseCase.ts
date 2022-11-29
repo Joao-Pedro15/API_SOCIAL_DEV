@@ -16,7 +16,7 @@ export class AddPostUseCase {
       const post = await this.addPostRepository.addPostRepository(data)
       return post
     } catch (error:any) {
-      throw new Error(error.message)
+      return error.message
     }
   }
 }
