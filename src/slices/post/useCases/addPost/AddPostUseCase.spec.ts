@@ -16,10 +16,16 @@ describe('testing useCase by addpost', () => {
     addRepository.addPostRepository.mockResolvedValue(undefined)
   })
 
-  it('testing successfully', () => {
-    const addPost = new AddPostUseCase(addRepository, getRepository).execute(PostEntityFake)
+  it('testing successfully', async() => {
+    const addPost = await new AddPostUseCase(addRepository, getRepository).execute(PostEntityFake)
     expect(addPost).toEqual(addPost)
-    
+  })
+
+  it('not found user ', async() => {
+    getRepository.getUserById.mockResolvedValue(null)
+    const addPost = await new AddPostUseCase(addRepository, getRepository).execute(PostEntityFake) as Error
+    expect(addPost).toEqual("user not found")
+
   })
 
 })
