@@ -18,6 +18,8 @@ export class UserEntity {
     public confirmPassword: string
     private constructor(data: UserData){
         Object.assign(this, data)
+        this.status = 'Ativo'
+        this.admin = false
     }   
 
     static create (data: UserData) {
