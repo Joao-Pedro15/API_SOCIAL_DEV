@@ -1,5 +1,7 @@
 export type UserData = {
-    name: string
+    firstName: string
+    lastName?: string
+    firstAcess?: boolean
     email: string
     status: string
     admin: boolean
@@ -9,7 +11,8 @@ export type UserData = {
 }
 
 export class UserEntity {
-    public name: string
+    public firstName: string
+    public lastName: string
     public email: string
     public status: string
     public admin: boolean
