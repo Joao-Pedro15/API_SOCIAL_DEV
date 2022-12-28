@@ -1,3 +1,4 @@
+import './config/module-alias'
 import express, { Request, Response } from 'express'
 import { users } from './routes'
 
