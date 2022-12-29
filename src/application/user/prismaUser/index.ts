@@ -23,4 +23,13 @@ export class User {
       throw new Error(error)
     }
   }
+
+  async getById(id: string) {
+    try {
+      const user = await Prisma.user.findUnique({ where: { id } })
+      return user
+    } catch (error) {
+      throw new Error(error)
+    }
+  }
 }
