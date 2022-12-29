@@ -1,7 +1,7 @@
 
 export type PostData = {
   content: string,
-  userId: number,
+  userId: string,
   comments: number[],
   reactions: number[],
   status: boolean
@@ -9,7 +9,7 @@ export type PostData = {
 
 export class PostEntity {
   public content: string
-  public userId: number
+  public userId: string
   public comments: number[]
   public reactions: number[]
   public status: boolean
