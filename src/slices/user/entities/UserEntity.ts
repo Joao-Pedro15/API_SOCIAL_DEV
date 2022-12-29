@@ -25,9 +25,15 @@ export class UserEntity {
         this.admin = false
     }   
 
-    static create (data: UserData) {
+    static create (data: UserData) {        
         if(data.password !== data.confirmPassword) throw new Error("Password and ConfirmPassord not equals")
+        if(!this.validate(data)) throw new Error("Email, Password and firstName not empty")
         const user = new UserEntity(data)
         return user
+    }
+
+    static validate(data: UserData) {
+        if(!(data.email) || !(data.password) || !(data.firstName)) return false
+        return true
     }
 }
