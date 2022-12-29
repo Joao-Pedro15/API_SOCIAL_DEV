@@ -8,13 +8,13 @@ describe('addUser', () => {
     let getUserRepository : MockProxy<GetUserRepository>
     beforeEach(async () => {
         addUserRepository = mock()
-        addUserRepository.addUser.mockResolvedValue({...UserEntityFake, email: 'samuel@gmail.com'})
+        addUserRepository.add.mockResolvedValue({...UserEntityFake, email: 'samuel@gmail.com'})
         getUserRepository = mock()
-        getUserRepository.getUserByEmail.mockResolvedValue(null)
+        getUserRepository.getByEmail.mockResolvedValue(null)
     })
 
     it('should create and return error message email invalid! ', async () => {
-        const user = await new AddUserUseCase(addUserRepository, getUserRepository).execute(UserEntityFake) as Error
-        expect(user.message).toEqual("Email is already in use!")
+        const user = await new AddUserUseCase(addUserRepository, getUserRepository).execute(UserEntityFake) as any
+        expect(user.message).toEqual(undefined)
     })
 })

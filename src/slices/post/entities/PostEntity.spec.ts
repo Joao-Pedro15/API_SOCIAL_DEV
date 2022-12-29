@@ -1,7 +1,7 @@
 import { PostData, PostEntity } from '@/slices/post/entities/PostEntity'
 
 export const PostEntityFake : PostData = {
-  userId: 1,
+  userId: 'ro9iuhgfriugh',
   content: 'this content post',
   comments: [1, 3, 5],
   reactions: [3, 5, 7],

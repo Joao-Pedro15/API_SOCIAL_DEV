@@ -11,9 +11,9 @@ export class AddPostUseCase {
     ) {}
   async execute(data: PostEntity) {
     try {
-      const user = await this.getUserRepository.getUserById(data.userId)
+      const user = await this.getUserRepository.getById(data.userId)
       if(!user) throw new Error('user not found')
-      const post = await this.addPostRepository.addPostRepository(data)
+      const post = await this.addPostRepository.add(data)
       return post
     } catch (error:any) {
       return error.message
