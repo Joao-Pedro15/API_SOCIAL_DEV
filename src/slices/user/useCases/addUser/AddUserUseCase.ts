@@ -1,21 +1,21 @@
-import { AddUserRepository, GetUserRepository } from '@/slices/user/repositories'
+import { IAddUserRepository, IGetUserRepository } from '@/slices/user/repositories'
 import { UserData, UserEntity } from '../../entities/UserEntity'
 
 
 export class AddUserUseCase {
     constructor(
-        private addUserRepository : AddUserRepository | any,
-        private getUserRepository : GetUserRepository | any
+        private addUserRepository : IAddUserRepository | any,
+        private getUserRepository : IGetUserRepository
     ){}
     async execute(data: UserData) {
         try {
             const userEntity = UserEntity.create(data)
-            const existUser = this.getUserRepository.getUserByEmail(data.email)
+            const existUser = await this.getUserRepository.getByEmail(data.email)            
             if(existUser) throw new Error('Email is already in use!')
-            const user = await this.addUserRepository.addUser(userEntity)
-            return user
+            // const user = await this.addUserRepository.addUser(userEntity)
+            return userEntity
         } catch (error:any) {
-            return error
+            throw new Error(error)
         }
     }
 }
