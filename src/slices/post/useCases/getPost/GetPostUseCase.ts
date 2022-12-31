@@ -9,7 +9,7 @@ export class GetPostUseCase {
   async execute(query: string){
     try {
       const posts = await this.repository.getAllPosts(query)
-      if(posts.length === 0) return null
+      if(posts!.length === 0) return null
       return posts
     } catch (error:any) {
       return error.message
