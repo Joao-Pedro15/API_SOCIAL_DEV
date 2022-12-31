@@ -2,7 +2,7 @@
   "name": "api_social_dev",
   "version": "1.0.0",
   "description": "",
-  "main": "index.ts",
+  "main": "index.js",
   "engines": {
     "node": "14.x"
   },
@@ -23,7 +23,7 @@
     "url": "https://github.com/Joao-Pedro15/API_SOCIAL_DEV/issues"
   },
   "_moduleAliases": {
-    "@": ["src"]
+    "@": "dist"
   },
   "homepage": "https://github.com/Joao-Pedro15/API_SOCIAL_DEV#readme",
   "dependencies": {
