@@ -7,9 +7,10 @@
     "node": "14.x"
   },
   "scripts": {
-    "start": "node ./server/index.ts",
+    "start": "node dist/server/index.js",
     "dev": "ts-node-dev --exit-child --transpile-only --ignore-watch node_modules --respawn src/server/index.ts",
-    "test": "jest --passWithNoTests --silent --noStackTrace --runInBand"
+    "test": "jest --passWithNoTests --silent --noStackTrace --runInBand",
+    "build": "tsc"
   },
   "repository": {
     "type": "git",

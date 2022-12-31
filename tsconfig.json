@@ -2,7 +2,7 @@
 "compilerOptions": {
     "resolveJsonModule": true,
     "incremental":true,
-    "outDir": "dist",
+    "outDir": "./dist",
     "rootDirs": ["src"],
     "target": "ES2021",
     "sourceMap": true,
