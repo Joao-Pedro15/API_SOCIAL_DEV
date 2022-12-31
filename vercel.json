@@ -3,7 +3,6 @@
   "buildCommand": "npm start",
   "builds": [
     {
-      "buildCommand": "npm start",
       "src": "dist/server/index.js",
       "use": "@vercel/node"
     }
