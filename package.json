@@ -3,7 +3,11 @@
   "version": "1.0.0",
   "description": "",
   "main": "index.ts",
+  "engines": {
+    "node": "14.x"
+  },
   "scripts": {
+    "start": "node ./server/index.ts",
     "dev": "ts-node-dev --exit-child --transpile-only --ignore-watch node_modules --respawn src/server/index.ts",
     "test": "jest --passWithNoTests --silent --noStackTrace --runInBand"
   },
