@@ -1,23 +1,30 @@
 {
-"compilerOptions": {
-    "resolveJsonModule": true,
-    "incremental":true,
-    "outDir": "./dist",
-    "rootDirs": ["src"],
-    "target": "ES2021",
-    "sourceMap": true,
-    "skipLibCheck": true,
-    "forceConsistentCasingInFileNames": true,
-    "moduleResolution": "node",
-    "esModuleInterop": true,
-    "baseUrl": "./src",
-    "paths": {
-    "@/*": ["*"]
+    "compilerOptions": {
+        "target": "es2017",
+        "module": "commonjs",
+        "lib": ["ES6"],
+        "allowJs": true,
+        "outDir": "./dist",
+        "rootDir": "./src",
+        "sourceMap": false,
+        "strict": false,
+        "removeComments": true,
+        "esModuleInterop": true,
+        "resolveJsonModule": true,
+        "experimentalDecorators": true,
+        "emitDecoratorMetadata": true,
+        "skipLibCheck": true,
+        "forceConsistentCasingInFileNames": true,
+        "baseUrl": ".",
+        "typeRoots": ["./src/@types", "node_modules/@types"],
+        "paths": {
+            "@/*": ["src/*"]
+        }
     },
-    "strict": false,
-    "noImplicitOverride": true,
-    "removeComments": true,
-    "emitDecoratorMetadata": true,
-    "experimentalDecorators": true
-}, "include": ["src"]
+    "include": [
+        "src/**/*"
+    ],
+    "exclude": [ 
+        "public"
+     ]
 }
