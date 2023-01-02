@@ -1,10 +1,14 @@
 import './config/module-alias'
+import 'dotenv/config'
+import cors from 'cors'
 import express, { Request, Response } from 'express'
 import { users } from './routes'
+
 
 const app = express()
 app.use(express.urlencoded({extended: true}))
 app.use(express.json())
+app.use(cors())
 
 app.use('/users', users.default)
 
