@@ -32,4 +32,13 @@ export class User {
       throw new Error(error)
     }
   }
+
+  async getAll(query: any) {
+    try {
+      const users = await Prisma.user.findMany()      
+      return users
+    } catch (error) {
+      throw new Error(error)
+    }
+  }
 }
