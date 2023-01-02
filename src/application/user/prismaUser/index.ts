@@ -5,11 +5,13 @@ export class User {
   async add(data: UserData) : Promise<Partial<UserData>> {
     try {
       const user = await Prisma.user.create({
-        data:{ ...data }
+        data:{ ...data, admin: false }
       })
       return user
     } catch (error) {
-      throw new Error(error)
+      console.log(error.message);
+      
+      throw new Error(error.message)
     }
   }
 

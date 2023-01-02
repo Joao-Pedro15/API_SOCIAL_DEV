@@ -12,10 +12,11 @@ export class AddUserUseCase {
             const userEntity = UserEntity.create(data)
             const existUser = await this.getUserRepository.getByEmail(data.email)            
             if(existUser) throw new Error('Email is already in use!')
-            // const user = await this.addUserRepository.add(userEntity)
-            return userEntity
-        } catch (error:any) {
-            throw new Error(error)
+            Reflect.deleteProperty(userEntity, 'confirmPassword')
+            const user = await this.addUserRepository.add(userEntity)            
+            return user
+        } catch (error) {
+            throw new Error(error.message)
         }
     }
 }

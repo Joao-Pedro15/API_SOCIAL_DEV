@@ -4,7 +4,7 @@ export type UserData = {
     firstAcess?: boolean
     email: string
     status: string
-    admin: boolean
+    admin?: boolean
     photo?: string
     password: string
     confirmPassword: string
@@ -15,7 +15,7 @@ export class UserEntity {
     public lastName: string
     public email: string
     public status: string
-    public admin: boolean
+    public admin?: boolean
     public photo?: string
     public password: string
     public confirmPassword: string
