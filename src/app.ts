@@ -1,5 +1,5 @@
-import './config/module-alias'
 import 'dotenv/config'
+import './config/module-alias'
 import cors from 'cors'
 import express, { Request, Response } from 'express'
 import { users } from './routes'
