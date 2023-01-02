@@ -27,7 +27,7 @@ export const uploadImage = (request: Request, response: Response, next: NextFunc
   stream.on('error', (error) => console.error(error))
   stream.on('finish', async () => { 
     await file.makePublic()
-    request['file'].firebaseUrl = `https://storage.googleapis.com/${BUCKET}/${nameFile}`
+    request['file'].firebaseUrl = `https://storage.googleapis.com/${BUCKET.replace('gs://', '')}/${nameFile}`
     next()
   })
 
