@@ -10,5 +10,14 @@ describe('useCase login user', () => {
     getUserRepository.getByEmail.mockResolvedValue(UserEntityFake)
   })
 
+  it('should return user successfully', async () => {
+    const login = await new LoginUserUseCase(getUserRepository).execute(UserEntityFake.email!, UserEntityFake.password!)
+    expect(login).toEqual(UserEntityFake)
+  })
+
+  it('should return user with last param equal a true', async() => {
+    const login = await new LoginUserUseCase(getUserRepository).execute(UserEntityFake.email!, undefined, true)
+    expect(login).toEqual(UserEntityFake)
+  })
 
 })
