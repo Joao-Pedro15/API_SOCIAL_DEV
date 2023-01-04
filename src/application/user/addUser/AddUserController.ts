@@ -4,14 +4,14 @@ import { Request, Response } from 'express'
 
 class AddUserController {
   async handle(request: Request, response: Response) {
-    let { admin, confirmPassword, email, firstName, password, status, firstAcess, lastName, photo } : UserData = request.body
+    let { admin, confirmPassword, email, firstName, password, status, firstAcess, lastName, photo, description, githubUsername, job, skills } : UserData = request.body
     let urlImage = request['file'].firebaseUrl
     if(urlImage){
       photo = urlImage
     }
 
     try {
-      const newUser = await factory.build({admin, confirmPassword, email, firstName, password, status, firstAcess, lastName, photo})
+      const newUser = await factory.build({admin, confirmPassword, email, firstName, password, status, firstAcess, lastName, photo, description, githubUsername, job, skills})
       
       return response.status(201).json({ message: 'successfully create user!', data: newUser })
     } catch (error:any) {
