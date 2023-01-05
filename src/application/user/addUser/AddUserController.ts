@@ -5,9 +5,9 @@ import { Request, Response } from 'express'
 class AddUserController {
   async handle(request: Request, response: Response) {
     let { admin, confirmPassword, email, firstName, password, status, firstAcess, lastName, photo, description, githubUsername, job, skills } : UserData = request.body
-    let urlImage = request['file'].firebaseUrl
-    if(urlImage){
-      photo = urlImage
+    const firebaseUrl : string = request['file']?.firebaseUrl
+    if(firebaseUrl){
+      photo = firebaseUrl
     }
 
     try {

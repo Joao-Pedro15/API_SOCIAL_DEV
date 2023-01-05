@@ -46,7 +46,7 @@ export class User {
 
   async delete(id: string) {
     try {
-      await Prisma.user.delete({ where: { id } })
+      await Prisma.user.deleteMany()
       return
     } catch (error) {
       throw new Error(error.message)

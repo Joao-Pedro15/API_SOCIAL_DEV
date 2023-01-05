@@ -14,7 +14,11 @@ admin.initializeApp({
 const bucket = admin.storage().bucket()
 
 export const uploadImage = (request: Request, response: Response, next: NextFunction) => {
-  if(!request['file']) return next()
+  if(!request['file']) {
+    console.log('caiu aquyi');
+    return next()
+    
+  }
   const image = request['file']
   const nameFile = `${Date.now()}.${image.originalname.split(".").pop()}`
   const file = bucket.file(nameFile)
