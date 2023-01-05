@@ -43,4 +43,13 @@ export class User {
       throw new Error(error)
     }
   }
+
+  async delete(id: string) {
+    try {
+      await Prisma.user.delete({ where: { id } })
+      return
+    } catch (error) {
+      throw new Error(error.message)
+    }
+  }
 }
