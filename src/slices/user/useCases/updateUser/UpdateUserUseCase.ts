@@ -9,10 +9,10 @@ export class UpdateUserUseCase {
   async execute(id: string) {
     try {
       const user = await this.getUserRepository.getById(id)
-      if(user) throw new Error('not found user')
+      if(!user) throw new Error('not found user')
       return this.updateUserRepository.update(id)
     } catch (error) {
-      throw new Error(error)
+      throw new Error(error.message)
     }
   }
 }
