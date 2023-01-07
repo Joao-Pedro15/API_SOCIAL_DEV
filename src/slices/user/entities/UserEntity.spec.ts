@@ -3,12 +3,12 @@ import exp from 'constants'
 
 export const UserEntityFake : UserData = {
     firstName: 'fakeUsername',
-    email: 'joaoa@GMAIL.COM',
+    email: 'joao.monteiro@gmail.com',
     admin: false,
     status: 'Ativo',
     photo: 'https://link-da-foto',
-    password: 'senha123',
-    confirmPassword: 'senha123'
+    password: 'jojo',
+    confirmPassword: 'jojo'
 }
 
 describe('user', () => {
