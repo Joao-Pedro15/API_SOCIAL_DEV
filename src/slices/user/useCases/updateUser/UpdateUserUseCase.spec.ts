@@ -8,5 +8,16 @@ describe('testing useCase by updateUser', () => {
   beforeEach(() => {
     getUserRepository = mock()
     updateUserRepository = mock()
+
+    getUserRepository.getById.mockResolvedValue(null)
+    updateUserRepository.update.mockResolvedValue({})
+  })
+
+  it('testing with not exist user', async () => {
+    try {
+      await new UpdateUserUseCase(updateUserRepository, getUserRepository).execute('rughru')
+    } catch (error) {
+      expect(error.message).toEqual('not found user')
+    }
   })
 })
