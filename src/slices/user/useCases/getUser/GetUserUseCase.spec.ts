@@ -8,7 +8,7 @@ describe('addUser', () => {
     beforeEach(async () => {
         getUserRepository = mock()
         getUserRepository.getByEmail.mockResolvedValue(UserEntityFake)
-        // getUserRepository.mockResolvedValue(UserEntityFake)
+        getUserRepository.getById.mockResolvedValue(UserEntityFake)
         getUserRepository.getAll.mockResolvedValue([UserEntityFake, UserEntityFake])
     })
 
@@ -16,10 +16,10 @@ describe('addUser', () => {
         const user = await new GetUserUseCase(getUserRepository).getByEmail('joao@gmail.com')
         expect(user).toEqual(UserEntityFake)
     })
-//     it('testing method getUserById from class getUserRepository', async () => {
-//       const user = await new GetUserUseCase(getUserRepository).getUserById(2)
-//       expect(user).toEqual(UserEntityFake)
-//   })
+    it('testing method getUserById from class getUserRepository', async () => {
+      const user = await new GetUserUseCase(getUserRepository).getById('oeiuh')
+      expect(user).toEqual(UserEntityFake)
+  })
   it('testing method getAllUsers from class getUserRepository', async () => {
     const user = await new GetUserUseCase(getUserRepository).getAll({})
     expect(user.length).toEqual(2)
