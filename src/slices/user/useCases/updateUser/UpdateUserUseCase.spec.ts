@@ -15,7 +15,7 @@ describe('testing useCase by updateUser', () => {
 
   it('testing with not exist user', async () => {
     try {
-      await new UpdateUserUseCase(updateUserRepository, getUserRepository).execute('rughru')
+      await new UpdateUserUseCase(updateUserRepository, getUserRepository).execute('rughru', { admin: true })
     } catch (error) {
       expect(error.message).toEqual('not found user')
     }
