@@ -52,4 +52,16 @@ export class User {
       throw new Error(error.message)
     }
   }
+
+  async update(id: string, data: Partial<UserData>) {
+    try {
+      const user =  await Prisma.user.update({
+        where: { id },
+        data:{ ...data }
+      })
+      return user
+    } catch (error) {
+      throw new Error(error.message)
+    }
+  }
 }
