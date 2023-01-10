@@ -6,6 +6,7 @@ import addUserController from '@/application/user/addUser/AddUserController'
 import getUserController from '@/application/user/getUser/GetUserController'
 import loginUserController from '@/application/user/loginUser/LoginUserController'
 import deleteUserController from '@/application/user/deleteUser/DeleteUserController'
+import updateUserController from '@/application/user/updateUser/UpdateUserController'
 
 const router = Router()
 
@@ -16,5 +17,7 @@ router.get('/getUsers', getUserController.handle)
 router.post('/loginUser', loginUserController.handle)
 
 router.delete('/deleteUser/:id', deleteUserController.handle)
+
+router.put('/updateUser', updateUserController.handle)
 
 export default router
