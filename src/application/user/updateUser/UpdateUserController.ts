@@ -6,6 +6,10 @@ class UpdateUserController {
   async handle(request: Request, response: Response) {
     const data = request.body.data as Partial<UserData>
     const id = request.body.id as string
+    const firebaseUrl : string = request['file']?.firebaseUrl
+    if(firebaseUrl){
+      data.photo = firebaseUrl
+    }
     try {
       const user = await factory.build(id, data)
       return response.status(204).json(user)
