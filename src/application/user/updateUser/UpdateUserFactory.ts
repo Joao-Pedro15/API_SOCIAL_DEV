@@ -16,3 +16,5 @@ class UpdateUserFactory {
     }
   }
 }
+
+export default new UpdateUserFactory()
