@@ -18,6 +18,6 @@ router.post('/loginUser', loginUserController.handle)
 
 router.delete('/deleteUser/:id', deleteUserController.handle)
 
-router.put('/updateUser', updateUserController.handle)
+router.put('/updateUser', Multer.single('file'), uploadImage, updateUserController.handle)
 
 export default router
