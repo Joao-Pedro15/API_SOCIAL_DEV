@@ -23,4 +23,10 @@ describe('testing authenticate method', () => {
     expect(res).toBe('jwt malformed')
   })
 
+  it('not passing token in authorization headers', async() => {
+    request = { headers: { authorization: ` ` } } as Request
+    const res = await authentication(request, response, next)
+    expect(res).toBe('jwt must be provided')
+  })
+
 })
