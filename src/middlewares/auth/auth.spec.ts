@@ -15,7 +15,12 @@ describe('testing authenticate method', () => {
     request = { headers: { authorization: `Bearer ${fakeToken}` } } as Request
     const res = await authentication(request, response, next)
     expect(res).toBe('invalid signature')
+  })
 
+  it('invalid token bad format', async() => {
+    request = { headers: { authorization: `Bearer eroigjroigjroig` } } as Request
+    const res = await authentication(request, response, next)
+    expect(res).toBe('jwt malformed')
   })
 
 })
