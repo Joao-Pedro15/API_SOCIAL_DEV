@@ -21,4 +21,8 @@ model User {
   password String?
   firstAccess Boolean?
   phone String?
+  githubUsername String?
+  job String?
+  skills String?
+  description String?
 }

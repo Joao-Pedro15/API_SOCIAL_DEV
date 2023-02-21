@@ -8,18 +8,17 @@ export async function authentication(
 ) {
   const authHeader = request.headers.authorization;
 
-  if (!authHeader) {
-    return response.status(401).end();
-  }
+  if (!authHeader) return false
 
   const [, token] = authHeader.split(" ");
 
   try {
-    verify(token, process.env.JWT_SECRET);
+    const verified = verify(token, process.env.JWT_SECRET);
+    if(!verified) throw new Error('invalid token')
 
     const { sub: userId } = decode(token);
     return next();
   } catch (err) {
-    return response.status(401).end();
+    return err.message
   }
 }

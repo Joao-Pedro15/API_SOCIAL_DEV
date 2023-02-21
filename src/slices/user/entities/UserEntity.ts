@@ -8,6 +8,10 @@ export type UserData = {
     photo?: string
     password: string
     confirmPassword: string
+    githubUsername?: string
+    job?: string
+    skills?: string
+    description?:string
 }
 
 export class UserEntity {
@@ -19,6 +23,10 @@ export class UserEntity {
     public photo?: string
     public password: string
     public confirmPassword: string
+    public job?: string
+    public githubUsername?: string
+    public skills?: string
+    public description: string
     private constructor(data: UserData){
         Object.assign(this, data)
         this.status = 'Ativo'

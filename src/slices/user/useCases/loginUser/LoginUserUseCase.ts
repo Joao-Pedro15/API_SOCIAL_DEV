@@ -1,4 +1,5 @@
 import { IGetUserRepository } from '@/slices/user/repositories'
+import { compareSync } from 'bcrypt'
 
 export class LoginUserUseCase {
   constructor(private getUserRepository: IGetUserRepository) {}
@@ -7,7 +8,7 @@ export class LoginUserUseCase {
     try {
       const user = await this.getUserRepository.getByEmail(email)
       if(!user) throw new Error('not found user')
-      if(!external && user.password !== password) throw new Error('Invalid password')
+      if(!external && !compareSync(password, user.password)) throw new Error('Invalid password')
       return user
     } catch (error) {
       throw new Error(error.message)

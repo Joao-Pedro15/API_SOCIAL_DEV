@@ -27,13 +27,13 @@ export class GetUserUseCase {
         }
     }
 
-    // async getUserById(id: number) : Promise<UserData | null> {
-    //     try {
-    //         if(!id) throw new Error('Invalid email!')
-    //         const user = await this.getUserRepository.getUserById(id)
-    //         return user    
-    //     } catch (error) {
-    //         return error
-    //     }
-    // }
+    async getById(id: string) : Promise<Partial<UserData> | null> {
+        try {
+            if(!id) throw new Error('Invalid email!')
+            const user = await this.getUserRepository.getById(id)
+            return user    
+        } catch (error) {
+            return error
+        }
+    }
 }
