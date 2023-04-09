@@ -2,7 +2,6 @@ import * as admin from "firebase-admin";
 
 import { serviceAccount } from '@/config/firebasekey'
 import { NextFunction, Request, Response } from "express";
-const service = JSON.stringify(serviceAccount)
 
 const BUCKET = process.env.BUCKET
 
