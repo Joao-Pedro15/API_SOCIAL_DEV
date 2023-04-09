@@ -29,11 +29,11 @@ export class GetUserUseCase {
 
     async getById(id: string) : Promise<Partial<UserData> | null> {
         try {
-            if(!id) throw new Error('Invalid email!')
+            if(!id) throw new Error('Not passing id!')
             const user = await this.getUserRepository.getById(id)
             return user    
         } catch (error) {
-            return error
+            throw new Error(error.message)
         }
     }
 }
