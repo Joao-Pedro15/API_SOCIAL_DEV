@@ -25,4 +25,56 @@ model User {
   job String?
   skills String?
   description String?
+  ucPost    Post[] @relation("ucPost")
+  uuPost    Post[] @relation("uuPost")
+  ucComment    Comment[] @relation("ucComment")
+  uuComment    Comment[] @relation("uuComment")
+  ucReaction    Reaction[] @relation("ucReaction")
+  uuReaction    Reaction[] @relation("uuReaction")
+
+}
+
+
+model Post {
+  id  String @id @default(uuid())
+  title   String?
+  content String @db.NVarChar(4000) 
+  userCreated String
+  userUpdated String?
+  createdAt DateTime @default(now())
+  updatedAt DateTime?
+  createdUser User      @relation(name: "ucPost", fields: [userCreated], references: [id], onDelete: NoAction, onUpdate: NoAction)
+  updatedUser User?      @relation(name: "uuPost", fields: [userUpdated], references: [id], onDelete: NoAction, onUpdate: NoAction)
+  reaction    Reaction[]
+  comment     Comment[]
+
+}
+
+model Comment {
+  id           String         @id @default(uuid())
+  postId       String
+  content      String
+  userCreated  String?
+  createdAt    DateTime       @default(now())
+  userUpdated  String?
+  updatedAt    DateTime?
+  reactions    Reaction[]
+  post         Post?          @relation(fields: [postId], references: [id])
+  updatedUser  User?          @relation(name: "uuComment", fields: [userUpdated], references: [id], onDelete: NoAction, onUpdate: NoAction)
+  createdUser  User?          @relation(name: "ucComment", fields: [userCreated], references: [id], onDelete: NoAction, onUpdate: NoAction)
+}
+
+model Reaction {
+  id           String         @id @default(uuid())
+  commentId    String?
+  postId       String?
+  reactionType String?
+  userCreated  String?
+  createdAt    DateTime       @default(now())
+  userUpdated  String?
+  updatedAt    DateTime?
+  comment      Comment?       @relation(fields: [commentId], references: [id], onDelete: NoAction, onUpdate: NoAction)
+  post         Post?          @relation(fields: [postId], references: [id], onDelete: NoAction, onUpdate: NoAction)
+  updatedUser  User?          @relation(name: "uuReaction", fields: [userUpdated], references: [id], onDelete: NoAction, onUpdate: NoAction)
+  createdUser  User?          @relation(name: "ucReaction", fields: [userCreated], references: [id], onDelete: NoAction, onUpdate: NoAction)
 }

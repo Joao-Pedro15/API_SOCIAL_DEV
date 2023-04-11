@@ -9,8 +9,6 @@ export class User {
       })
       return user
     } catch (error) {
-      console.log(error.message);
-      
       throw new Error(error.message)
     }
   }
