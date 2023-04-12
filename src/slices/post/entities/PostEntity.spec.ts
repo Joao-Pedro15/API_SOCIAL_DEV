@@ -1,17 +1,30 @@
 import { PostData, PostEntity } from '@/slices/post/entities/PostEntity'
+import { randomUUID } from 'crypto'
+import MockDate from 'mockdate'
 
 export const PostEntityFake : PostData = {
-  userId: 'ro9iuhgfriugh',
+  id: randomUUID(),
+  userCreated: 'ro9iuhgfriugh',
   content: 'this content post',
-  comments: [1, 3, 5],
-  reactions: [3, 5, 7],
-  status: true
+  admin: true,
+  title: "Post title",
+  createdAt: new Date()  ,
+  updatedAt: null,
+  userUpdated: null
 }
 
 describe('user', () => {
-    it('create user successfully!', () => {
-        const user = PostEntity.create(PostEntityFake)
-        expect(user).toBeTruthy()
-        expect(user).toEqual(PostEntityFake)
-    })    
+
+  beforeAll(async () => {
+    MockDate.set(new Date())
+  }) 
+  afterAll(async () => {
+    MockDate.reset()
+  })
+
+  it('create user successfully!', () => {
+      const user = new PostEntity(PostEntityFake)
+      expect(user).toBeTruthy()
+      expect(user).toEqual({...PostEntityFake, createdAt: new Date()})
+  })    
 })
