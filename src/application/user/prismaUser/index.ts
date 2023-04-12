@@ -1,4 +1,5 @@
 import { Prisma } from "@/database/prisma";
+import { InternalServer } from "@/http/errors/InternalServer";
 import { UserData } from "@/slices/user/entities/UserEntity";
 
 export class User {
@@ -9,7 +10,7 @@ export class User {
       })
       return user
     } catch (error) {
-      throw new Error(error.message)
+      throw new InternalServer()
     }
   }
 
@@ -20,7 +21,7 @@ export class User {
       })
       return user
     } catch (error) {
-      throw new Error(error)
+      throw new InternalServer()
     }
   }
 
@@ -29,7 +30,7 @@ export class User {
       const user = await Prisma.user.findUnique({ where: { id } })
       return user
     } catch (error) {
-      throw new Error(error)
+      throw new InternalServer()
     }
   }
 
@@ -38,7 +39,7 @@ export class User {
       const users = await Prisma.user.findMany()      
       return users
     } catch (error) {
-      throw new Error(error)
+      throw new InternalServer()
     }
   }
 
