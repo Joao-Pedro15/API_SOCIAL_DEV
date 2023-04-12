@@ -1,21 +1,31 @@
+import { Post, Comment, Reaction, User } from '@prisma/client'
 
-export type PostData = {
+export interface PostData extends Post {
   content: string,
-  userId: string,
-  comments: number[],
-  reactions: number[],
-  status: boolean
+  title: string
+  userCreated: string,
+  userUpdated: string | null
+  admin: boolean,
+  createdAt: Date
+  updatedAt: Date | null
 }
 
 export class PostEntity {
   public content: string
-  public userId: string
-  public comments: number[]
-  public reactions: number[]
-  public status: boolean
+  public title: string
+  public userCreated: string
+  public userUpdated: string
+  public admin?: boolean
+  public createdAt?: Date
+  public updatedAt?: Date
   constructor(data: PostData) {
     Object.assign(this, data)
-    data.status = true
+    this.createdAt = new Date()
+    this.updatedAt = null
+    this.userUpdated = null
+    if(!data.admin) {
+      this.admin = false
+    }
   }
 
   static create(data:PostData) : PostEntity | Error {
