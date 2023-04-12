@@ -1,4 +1,4 @@
-import { PostEntity } from '@/slices/post/entities/PostEntity'
+import { PostData, PostEntity } from '@/slices/post/entities/PostEntity'
 import { AddPostRepository } from '@/slices/post/repositories/AddPostRepository'
 import { GetUserRepository } from '@/slices/user/repositories/GetUserRepository'
 
@@ -9,9 +9,9 @@ export class AddPostUseCase {
     private getUserRepository: GetUserRepository
 
     ) {}
-  async execute(data: PostEntity) {
+  async execute(data: PostData) {
     try {
-      const user = await this.getUserRepository.getById(data.userId)
+      const user = await this.getUserRepository.getById(data.userCreated)
       if(!user) throw new Error('user not found')
       const post = await this.addPostRepository.add(data)
       return post
