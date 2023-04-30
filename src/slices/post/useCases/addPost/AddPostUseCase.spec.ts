@@ -8,7 +8,7 @@ import { PostEntityFake } from '@/slices/post/entities/PostEntity.spec'
 
 describe('testing useCase by addpost', () => {
   let getRepository: MockProxy<GetUserRepository>
-  let addRepository: MockProxy<AddPostRepository>
+  let addRepository: MockProxy<AddPostRepository>;
   beforeEach(() => {
     getRepository = mock()
     addRepository = mock()
